@@ -1,0 +1,47 @@
+{
+  "name": "@coreui/desktop-controller-mcp",
+  "version": "0.2.0",
+  "description": "Cross-platform UI automation MCP server with Python backend",
+  "main": "index.js",
+  "bin": {
+    "coreui-mcp": "./index.js",
+    "desktop-controller-mcp": "./index.js"
+  },
+  "scripts": {
+    "test": "node index.js",
+    "dev": "node index.js",
+    "build": "echo 'Build process'",
+    "prepublishOnly": "echo 'Pre-publish checks'"
+  },
+  "dependencies": {
+    "cross-spawn": "^7.0.3"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "os": [
+    "win32",
+    "darwin",
+    "linux"
+  ],
+  "keywords": [
+    "mcp",
+    "automation",
+    "desktop",
+    "claude",
+    "ui-automation",
+    "python",
+    "opencv"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "files": [
+    "index.js",
+    "../mcp/",
+    "../config.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/CoreUI-mcp.git"
+  }
+}

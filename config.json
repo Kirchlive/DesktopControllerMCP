@@ -1,0 +1,92 @@
+{
+  "api": {
+    "host": "0.0.0.0",
+    "port": 8000,
+    "cors_origins": [
+      "*"
+    ],
+    "api_prefix": "/api/v1"
+  },
+  "capture": {
+    "default_format": "PNG",
+    "screenshot_quality": 95,
+    "optimize_images": true
+  },
+  "vision": {
+    "default_threshold": 0.8,
+    "template_matching_method": "TM_CCOEFF_NORMED",
+    "enable_multiscale_template_matching": false
+  },
+  "input_simulation": {
+    "click_delay_ms": 10,
+    "typing_delay_ms": 5,
+    "pyautogui_fail_safe": true,
+    "pyautogui_pause_s": 0.0
+  },
+  "logging": {
+    "level": "DEBUG",
+    "file": "logs/mcp_core.log",
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(process)d - %(threadName)s - %(message)s"
+  },
+  "security": {
+    "allowed_template_dirs": [
+      "assets"
+    ],
+    "max_screenshot_size_bytes": 10485760,
+    "api_rate_limit": {
+      "enabled": false,
+      "requests_per_minute": 100
+    },
+    "npx_execution": {
+      "use_allowlist": true,
+      "allowed_packages": ["cowsay", "typescript", "@angular/cli"],
+      "blocked_command_parts": [
+        "rm ",
+        "del ",
+        "format ",
+        "sudo ",
+        "su ",
+        "mv ",
+        "cp ",
+        "chmod ",
+        "chown ",
+        "shutdown",
+        "reboot",
+        ">",
+        "<",
+        "|",
+        "&",
+        ";",
+        "$",
+        "..",
+        "wget ",
+        "curl ",
+        "git clone",
+        "npm install",
+        "npm uninstall",
+        "npm update",
+        "node ",
+        "python ",
+        "perl ",
+        "ruby ",
+        "bash ",
+        "sh ",
+        "&&",
+        "||",
+        "`",
+        "$(",
+        "eval"
+      ],
+      "allow_package_versions_in_name": true,
+      "execution_timeout_seconds": 300,
+      "default_env_vars": {}
+    }
+  },
+  "recorder": {
+    "default_macro_dir": "macros",
+    "default_recording_duration_s": 30.0
+  },
+  "debug": true,
+  "verbose_logging": true,
+  "timeout": 300
+}

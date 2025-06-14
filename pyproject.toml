@@ -1,0 +1,244 @@
+[build-system]
+requires = ["poetry-core>=1.9.0"] # It's good to use a recent version of poetry-core
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "coreui-mcp" # Using a more descriptive name, adjust if 'mcp' is preferred for PyPI
+version = "0.1.5" # UPDATED to current project version
+description = "Cross-platform Model Context Protocol service for desktop automation via screenshots, computer vision, and synthetic input."
+authors = ["CoreUI-MCP Development Team <dev@example.com>"] # Please replace with actual author details
+maintainers = ["CoreUI-MCP Development Team <dev@example.com>"] # Please replace
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/your-repo/CoreUI-mcp" # TODO: Replace with actual URL
+repository = "https://github.com/your-repo/CoreUI-mcp" # TODO: Replace with actual URL
+documentation = "https://coreui-mcp.readthedocs.io" # TODO: Replace with actual URL or remove if not applicable
+
+keywords = [
+    "automation", "desktop", "gui", "ui-automation", "rpa",
+    "computer-vision", "opencv", "yolo",
+    "mcp", "model-context-protocol", "llm", "ai-agent",
+    "screenshot", "input-simulation", "robotics"
+]
+classifiers = [
+    "Development Status :: 3 - Alpha", # Current status
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux", # More specific for Linux
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13", # UPDATED: Minimum and target Python version
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Testing",
+    "Topic :: Scientific/Engineering :: Image Recognition",
+    "Topic :: System :: Emulators", # If it emulates user interaction
+    "Topic :: Utilities"
+]
+packages = [{include = "mcp"}] # MODIFIED: Assumes the 'mcp' package is in an 'mcp' directory at project root
+
+[tool.poetry.dependencies]
+python = "^3.13"
+fastapi = "^0.111.0" # Check for latest (e.g., 0.111.x)
+pydantic = "^2.7.0"  # Pydantic v2; 2.7+ is current and supports Py3.12 well
+uvicorn = {extras = ["standard"], version = "^0.29.0"} # Check latest (e.g., 0.29.x or 0.30.x)
+python-multipart = "^0.0.9"  # Added dependency, check latest version on PyPI
+
+# Core window/GUI control
+pywinctl = "^0.4" # Check for latest compatible versions
+pyautogui = "^0.9.54" # Check for latest
+pillow = "^10.2"  # Pillow 10.2+ supports Python 3.12 well
+
+# Computer Vision
+opencv-python = "^4.9" # Check for latest (e.g., 4.9.x)
+
+# Low-level input
+pynput = "^1.7.6" # Current stable version
+
+# System monitoring and information
+psutil = "^5.9.0" # For system info (CPU, memory, etc.) - ADDED for Phase 1
+
+# Platform-specific dependencies for input backends
+pyobjc-framework-Quartz = {version = "^10.2", markers = "sys_platform == 'darwin'"} # For macOS
+pygetwindow = {version = "^0.0.9", markers = "sys_platform == 'win32'", optional = true}
+
+# Optional ML support for advanced vision tasks
+ultralytics = {version = "^8.2.0", optional = true} # For YOLOv8, check latest
+
+[tool.poetry.group.dev.dependencies]
+# Testing
+pytest = "^8.2.0"
+pytest-cov = "^5.0.0" # For code coverage
+pytest-asyncio = "^0.23.0" # For testing asyncio code with pytest
+
+# Linting and Formatting
+black = "^24.4.0" # Code formatter
+isort = "^5.13.0" # Import sorter
+mypy = "^1.10.0"  # Static type checker, 1.10 supports Python 3.12 well
+ruff = "^0.4.0"   # Fast linter, can replace flake8, isort, pyupgrade, etc.
+
+# Pre-commit hooks
+pre-commit = "^3.7.0"
+
+[tool.poetry.group.docs]
+# Dependencies for building documentation (e.g., with Sphinx)
+optional = true
+[tool.poetry.group.docs.dependencies]
+sphinx = "^7.3.0"
+sphinx-rtd-theme = "^2.0.0" # ReadTheDocs theme for Sphinx
+sphinx-autodoc-typehints = "^2.1.0" # For better type hints in Sphinx docs
+
+[tool.poetry.extras]
+# Defines optional sets of dependencies users can install.
+yolo = ["ultralytics"] # For YOLOv8 object detection support
+# 'all' extra can be useful for installing all optional features for development/testing.
+all = ["ultralytics", "pygetwindow"] # pygetwindow is only relevant for Windows as an option.
+
+[tool.poetry.scripts]
+# Defines command-line scripts that Poetry will create.
+# Format: script_name = "module.path:function_name"
+# These can be run using `poetry run <script_name>`
+# Umbenannt, um die Rolle klarzustellen (API-Server)
+coreui-mcp-http-api = "mcp.main:main_api_server" 
+# Umbenannt, um klarzustellen, dass dies der Stdio-Worker ist
+coreui-mcp-stdio-worker = "mcp.mcp_stdio_worker:main" 
+coreui-mcp-recorder = "mcp.recorder.recorder:main_recorder_cli"
+
+[tool.black]
+# Configuration for the Black code formatter
+line-length = 100
+target-version = ["py313"] # UPDATED: Format code compatible with Python 3.13 features
+include = '\.pyi?$' # Files to format
+# extend-exclude can remain as is, it's a standard set of exclusions.
+extend-exclude = '''
+/(
+  \.eggs | \.git | \.hg | \.mypy_cache | \.tox | \.venv |
+  _build | buck-out | build | dist
+)/
+'''
+
+[tool.isort]
+# Configuration for the isort import sorter
+profile = "black"         # Ensures compatibility with Black's formatting style
+line_length = 100
+multi_line_output = 3     # Corresponds to Black's default for wrapping imports
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true    # Consistent with Black
+
+[tool.mypy]
+# Configuration for the MyPy static type checker
+python_version = "3.13" # UPDATED: Tell MyPy to use Python 3.13 rules and stdlib
+# Recommended strictness options:
+warn_return_any = true          # Warns if a function returns `Any` implicitly
+warn_unused_configs = true      # Warns about unused MyPy config sections
+disallow_untyped_defs = true    # Requires all function definitions to be typed
+disallow_incomplete_defs = true # Requires all parts of a function signature to be typed
+check_untyped_defs = true       # Type-checks the bodies of functions without annotations (if above are False)
+no_implicit_optional = true     # Requires `Optional[X]` instead of allowing `X` to implicitly be `None`
+warn_redundant_casts = true
+warn_unused_ignores = true
+# strict_equality = true        # Enables stricter checking of equality operations
+# strict_optional = true        # Stricter checks for Optional types (can be verbose)
+
+# MyPy overrides for libraries that may have incomplete or missing type stubs
+[[tool.mypy.overrides]]
+module = [
+    "pywinctl.*",
+    "pygetwindow.*",
+    "cv2.*",             # OpenCV often has incomplete stubs
+    "ultralytics.*",     # May not have perfect stubs
+    "pynput.*",
+    "psutil.*",          # Added for system info support
+    "PIL.*"              # Pillow stubs can sometimes be incomplete
+]
+ignore_missing_imports = true # Suppress errors if stubs for these modules are not found
+
+[tool.ruff]
+# Configuration for the Ruff linter (fast, written in Rust)
+# Ruff can replace many other tools like Flake8, isort, pyupgrade.
+# See https://docs.astral.sh/ruff/settings/
+target-version = "py313" # UPDATED: Lint for Python 3.13 compatibility
+line-length = 100
+
+# Select rule codes to enable. `select = ["ALL"]` and then `ignore` specific ones is also an option.
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # Pyflakes
+    "I",   # isort (Ruff can handle import sorting)
+    "UP",  # pyupgrade (Ruff can suggest/fix upgrades to modern Python syntax)
+    "C90", # McCabe complexity
+    "N",   # pep8-naming conventions
+    "PT",  # flake8-pytest-style
+    "RUF", # Ruff-specific rules (often for performance or clarity)
+    "B",   # flake8-bugbear (finds potential bugs and design problems)
+    "SIM", # flake8-simplify (suggests simplifications)
+    "A",   # flake8-builtins (checks for shadowing builtins)
+]
+ignore = [
+    "E501",  # Line too long (handled by Black)
+    "B008",  # Do not perform function calls in argument defaults (can be acceptable in some cases)
+    # "C901",  # McCabe complexity: function is too complex (consider refactoring instead of ignoring)
+]
+# fix = true # Enable auto-fixing for many linting issues
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+
+addopts = [
+    "--strict-markers",
+    "--tb=short", 
+    "--cov=mcp",
+    "--cov-branch",
+    "--cov-report=term-missing",
+    "--cov-report=html:reports/coverage_html",
+    "--cov-report=xml:reports/coverage.xml",
+    "--cache-clear",
+    "--disable-warnings",
+    "-p", "no:cacheprovider",
+]
+
+tmp_path_retention_count = 0
+tmp_path_retention_policy = "none"
+
+markers = [ # Define custom Pytest markers
+    "slow: marks tests as slow to run (can be skipped with -m 'not slow')",
+    "integration: marks integration tests (can be run with -m integration)",
+    "windows: marks tests that should only run on Windows",
+    "macos: marks tests that should only run on macOS",
+    "linux: marks tests that should only run on Linux",
+]
+
+[tool.coverage.run]
+# Configuration for code coverage measurement (used by pytest-cov)
+source = ["mcp"] # ✅ KORRIGIERT: Source code für 'mcp' package ist jetzt in 'mcp' directory
+branch = true    # Enable branch coverage analysis.
+omit = [ # Patterns for files/directories to exclude from coverage
+    "*/tests/*",           # Exclude test files themselves
+    "*/__pycache__/*",
+    "*/.venv/*",           # Exclude the virtual environment
+]
+
+[tool.coverage.report]
+# Configuration for coverage reports
+precision = 2        # Number of decimal places for coverage percentages
+show_missing = true  # Show line numbers of lines not covered
+skip_covered = false # Include all files in the report, even if 100% covered
+# fail_under = 85    # Optional: Fail the build if coverage drops below this percentage
+exclude_lines = [    # Patterns for lines to exclude from coverage counts
+    "pragma: no cover", # Standard pragma for excluding lines
+    "def __repr__",     # Often __repr__ methods are simple and not critical to test logic
+    "def __str__",
+    "if TYPE_CHECKING:", # For type hint imports guarded by `typing.TYPE_CHECKING`
+    "raise NotImplementedError", # Lines that explicitly raise NotImplementedError
+    "if __name__ == .__main__.:", # Main guard for scripts
+    "@(abc\\.)?abstractmethod",   # Abstract methods in ABCs
+    "\\s*pass\\s*",               # Lines containing only 'pass'
+    "except ImportError:",      # Lines that only handle an ImportError and do nothing else
+    "except Exception:",        # Be careful with broad excepts, but if it's just logging/re-raising
+]

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-HTTP Server für CoreUI-MCP Python Backend
-Stellt die CoreUI-MCP Funktionalität über HTTP zur Verfügung
+HTTP Server für DesktopControllerMCP-MCP Python Backend
+Stellt die DesktopControllerMCP-MCP Funktionalität über HTTP zur Verfügung
 """
 
 import sys
@@ -14,7 +14,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Dict, Any, Optional
 
-# Füge CoreUI-mcp zum Python Path hinzu
+# Füge DesktopControllerMCP zum Python Path hinzu
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
@@ -56,8 +56,8 @@ def get_input_module():
     return input_module
 # FastAPI App
 app = FastAPI(
-    title="CoreUI-MCP HTTP Backend",
-    description="HTTP API für CoreUI-MCP Funktionalität",
+    title="DesktopControllerMCP-MCP HTTP Backend",
+    description="HTTP API für DesktopControllerMCP-MCP Funktionalität",
     version="0.2.0"
 )
 
@@ -101,7 +101,7 @@ class KeyPressRequest(BaseModel):
 # Health Check
 @app.get("/health")
 async def health_check():
-    return {"status": "healthy", "service": "coreui-mcp-backend"}
+    return {"status": "healthy", "service": "DesktopControllerMCP-mcp-backend"}
 
 # Test Endpoint
 @app.post("/api/test")
@@ -366,7 +366,7 @@ async def key_press_endpoint(request: KeyPressRequest):
         raise HTTPException(status_code=500, detail=f"Failed to press key: {str(e)}")
 
 if __name__ == "__main__":
-    print("Starting CoreUI-MCP HTTP Backend...")
+    print("Starting DesktopControllerMCP-MCP HTTP Backend...")
     print(f"Project root: {project_root}")
     
     uvicorn.run(

@@ -20,7 +20,7 @@ elif sys.platform.startswith("linux"): # Covers various Linux distributions
     from . import linux as backend
 else:  # pragma: no cover (Covers unsupported platforms)
     print(
-        f"WARNING: Unsupported platform '{sys.platform}' for CoreUI-MCP input backend. "
+        f"WARNING: Unsupported platform '{sys.platform}' for DesktopControllerMCP-MCP input backend. "
         "Input operations will be simulated by a dummy backend (logging to stderr only).",
         file=sys.stderr
     )
@@ -28,7 +28,7 @@ else:  # pragma: no cover (Covers unsupported platforms)
     class DummyInputBackend:
         """
         A dummy input backend that logs attempted actions to stderr.
-        Used when CoreUI-MCP is run on an unsupported platform for input control.
+        Used when DesktopControllerMCP-MCP is run on an unsupported platform for input control.
         """
         def _log_action(self, action_name: str, *args: Any, **kwargs: Any) -> None:
             arg_str = ", ".join(map(str, args))

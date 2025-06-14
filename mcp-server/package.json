@@ -1,10 +1,9 @@
 {
-  "name": "@coreui/desktop-controller-mcp",
+  "name": "@desktop-controller/mcp",
   "version": "0.2.0",
   "description": "Cross-platform UI automation MCP server with Python backend",
   "main": "index.js",
   "bin": {
-    "coreui-mcp": "./index.js",
     "desktop-controller-mcp": "./index.js"
   },
   "scripts": {
@@ -42,6 +41,6 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-org/CoreUI-mcp.git"
+    "url": "https://github.com/Kirchlive/DesktopControllerMCP.git"
   }
 }

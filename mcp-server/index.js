@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * CoreUI-MCP JSON-RPC Server mit Python Backend Integration
+ * DesktopControllerMCP-MCP JSON-RPC Server mit Python Backend Integration
  * VERSION: 0.4.1-refactored
  */
 
@@ -94,7 +94,7 @@ class DirectMCPServer {
     this.rl = null;
     this.requestIdCounter = 0;
     this.setupStdio();
-    console.error('[CoreUI-MCP-Direct] Server is running and waiting for messages.');
+    console.error('[DesktopControllerMCP-MCP-Direct] Server is running and waiting for messages.');
   }
 
   setupStdio() {
@@ -112,12 +112,12 @@ class DirectMCPServer {
   async handleIncomingMessage(line) {
     try {
       const message = JSON.parse(line.trim());
-      console.error(`[CoreUI-MCP-Direct] Received: ${message.method}`);
+      console.error(`[DesktopControllerMCP-MCP-Direct] Received: ${message.method}`);
       const response = await this.processRequest(message);
       // Sende die Antwort zurück an Claude Desktop
       console.log(JSON.stringify(response));
     } catch (error) {
-      console.error(`[CoreUI-MCP-Direct] Error processing message: ${error.message}`);
+      console.error(`[DesktopControllerMCP-MCP-Direct] Error processing message: ${error.message}`);
       // Sende eine Fehlerantwort an Claude Desktop
       console.log(JSON.stringify({
         jsonrpc: '2.0',
@@ -131,7 +131,7 @@ class DirectMCPServer {
       const { method, params, id } = request;
 
       if (method === 'initialize') {
-          return { jsonrpc: '2.0', id, result: { serverInfo: { name: 'CoreUI-MCP' } } };
+          return { jsonrpc: '2.0', id, result: { serverInfo: { name: 'DesktopControllerMCP-MCP' } } };
       }
       
       if (method === 'tools/list') {
@@ -167,13 +167,13 @@ class DirectMCPServer {
 const server = new DirectMCPServer();
 
 process.on('SIGINT', () => {
-  console.error('[CoreUI-MCP-Direct] Shutting down...');
+  console.error('[DesktopControllerMCP-MCP-Direct] Shutting down...');
   server.cleanup();
   process.exit(0);
 });
 
 process.on('SIGTERM', () => {
-    console.error('[CoreUI-MCP-Direct] Received SIGTERM, shutting down...');
+    console.error('[DesktopControllerMCP-MCP-Direct] Received SIGTERM, shutting down...');
     server.cleanup();
     process.exit(0);
 });

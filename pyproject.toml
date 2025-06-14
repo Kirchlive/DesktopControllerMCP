@@ -3,16 +3,16 @@ requires = ["poetry-core>=1.9.0"] # It's good to use a recent version of poetry-
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-name = "coreui-mcp" # Using a more descriptive name, adjust if 'mcp' is preferred for PyPI
+name = "DesktopControllerMCP-mcp" # Using a more descriptive name, adjust if 'mcp' is preferred for PyPI
 version = "0.1.5" # UPDATED to current project version
 description = "Cross-platform Model Context Protocol service for desktop automation via screenshots, computer vision, and synthetic input."
-authors = ["CoreUI-MCP Development Team <dev@example.com>"] # Please replace with actual author details
-maintainers = ["CoreUI-MCP Development Team <dev@example.com>"] # Please replace
+authors = ["DesktopControllerMCP-MCP Development Team <dev@example.com>"] # Please replace with actual author details
+maintainers = ["DesktopControllerMCP-MCP Development Team <dev@example.com>"] # Please replace
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/your-repo/CoreUI-mcp" # TODO: Replace with actual URL
-repository = "https://github.com/your-repo/CoreUI-mcp" # TODO: Replace with actual URL
-documentation = "https://coreui-mcp.readthedocs.io" # TODO: Replace with actual URL or remove if not applicable
+homepage = "https://github.com/your-repo/DesktopControllerMCP" # TODO: Replace with actual URL
+repository = "https://github.com/your-repo/DesktopControllerMCP" # TODO: Replace with actual URL
+documentation = "https://DesktopControllerMCP-mcp.readthedocs.io" # TODO: Replace with actual URL or remove if not applicable
 
 keywords = [
     "automation", "desktop", "gui", "ui-automation", "rpa",
@@ -99,10 +99,10 @@ all = ["ultralytics", "pygetwindow"] # pygetwindow is only relevant for Windows 
 # Format: script_name = "module.path:function_name"
 # These can be run using `poetry run <script_name>`
 # Umbenannt, um die Rolle klarzustellen (API-Server)
-coreui-mcp-http-api = "mcp.main:main_api_server" 
+DesktopControllerMCP-mcp-http-api = "mcp.main:main_api_server" 
 # Umbenannt, um klarzustellen, dass dies der Stdio-Worker ist
-coreui-mcp-stdio-worker = "mcp.mcp_stdio_worker:main" 
-coreui-mcp-recorder = "mcp.recorder.recorder:main_recorder_cli"
+DesktopControllerMCP-mcp-stdio-worker = "mcp.mcp_stdio_worker:main" 
+DesktopControllerMCP-mcp-recorder = "mcp.recorder.recorder:main_recorder_cli"
 
 [tool.black]
 # Configuration for the Black code formatter

@@ -480,7 +480,7 @@ if __name__ == "__main__":  # pragma: no cover
         click(target_pos1, "left")
         time.sleep(0.5)
 
-        test_string_1 = "Hello from CoreUI-MCP on Linux! "
+        test_string_1 = "Hello from DesktopControllerMCP on Linux! "
         logger.info(f"TEST: Typing: '{test_string_1}'")
         type_text(test_string_1)
         time.sleep(0.5)

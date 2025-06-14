@@ -1,5 +1,5 @@
 """
-routes.py – FastAPI layer exposing CoreUI-MCP (v0.1.5) core functionality.
+routes.py – FastAPI layer exposing DesktopControllerMCP-MCP (v0.1.5) core functionality.
 
 This module defines the HTTP API endpoints for interacting with the MCP service.
 It aims for:

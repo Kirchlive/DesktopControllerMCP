@@ -1,6 +1,6 @@
 """
 MCP - Model Context Protocol
-Core package initializer for CoreUI-MCP.
+Core package initializer for DesktopControllerMCP-MCP.
 """
 __version__ = "0.1.5" # Project version
 

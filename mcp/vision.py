@@ -1,5 +1,5 @@
 """
-vision.py – Element detection utilities for the CoreUI-MCP project (v0.1.5).
+vision.py – Element detection utilities for the DesktopControllerMCP-MCP project (v0.1.5).
 
 Provides template matching (OpenCV) and an optional YOLOv8 detector
 for identifying UI elements or objects within images.

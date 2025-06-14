@@ -1,5 +1,5 @@
 """
-recorder.py – JSON-based macro recorder & player for CoreUI-MCP (v0.1.5).
+recorder.py – JSON-based macro recorder & player for DesktopControllerMCP-MCP (v0.1.5).
 
 This module uses the `pynput` library to listen for global mouse and
 keyboard events during recording. Playback is performed by dispatching
@@ -424,7 +424,7 @@ def main_recorder_cli(): # pragma: no cover
         sys.exit(1)
 
     parser = argparse.ArgumentParser(
-        description="CoreUI-MCP Macro Recorder & Player (v0.1.5). "
+        description="DesktopControllerMCP-MCP Macro Recorder & Player (v0.1.5). "
                     "Records mouse/keyboard actions to JSON or plays them back."
     )
     subparsers = parser.add_subparsers(dest="command", required=True, title="Available Commands",

@@ -1,5 +1,5 @@
 """
-main.py – FastAPI application entry point for CoreUI-MCP (v0.1.5).
+main.py – FastAPI application entry point for DesktopControllerMCP-MCP (v0.1.5).
 
 This module provides the HTTP API server implementation using FastAPI.
 It loads configuration, sets up logging, CORS, and mounts the MCP router.
@@ -84,12 +84,12 @@ def create_app(config: Dict[str, Any] | None = None) -> FastAPI:
     )
     
     logger = get_logger(__name__)
-    logger.info(f"Starting CoreUI-MCP FastAPI Server v0.1.5")
+    logger.info(f"Starting DesktopControllerMCP-MCP FastAPI Server v0.1.5")
     
     # Create FastAPI app
     api_config = config.get("api", {})
     app = FastAPI(
-        title="CoreUI-MCP Automation API",
+        title="DesktopControllerMCP-MCP Automation API",
         description="Cross-platform desktop automation via screenshots, computer vision, and input simulation",
         version="0.1.5",
         debug=config.get("debug", False),
@@ -117,7 +117,7 @@ def create_app(config: Dict[str, Any] | None = None) -> FastAPI:
     @app.get("/", summary="API Root", description="Returns basic API information.")
     async def root():
         return {
-            "name": "CoreUI-MCP Automation API",
+            "name": "DesktopControllerMCP-MCP Automation API",
             "version": "0.1.5",
             "status": "running",
             "docs_url": "/docs",
@@ -127,7 +127,7 @@ def create_app(config: Dict[str, Any] | None = None) -> FastAPI:
     @app.get("/health", summary="Health Check", description="Health check endpoint.")
     async def health_check():
         return {
-            "service": "CoreUI-MCP", 
+            "service": "DesktopControllerMCP-MCP", 
             "version": "0.1.5",
             "status": "healthy"
         }
@@ -153,7 +153,7 @@ def main_api_server():
     port = api_config.get("port", 8080)          # Windows-friendly port
     debug = config.get("debug", False)
     
-    print(f"Starting CoreUI-MCP FastAPI server on {host}:{port}")
+    print(f"Starting DesktopControllerMCP-MCP FastAPI server on {host}:{port}")
     print(f"API Documentation: http://{host}:{port}/docs")
     print(f"API Root: http://{host}:{port}/api/v1/")
     

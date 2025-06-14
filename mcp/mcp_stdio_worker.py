@@ -39,7 +39,7 @@ try:
     from mcp.vision import VisionError, TemplateNotFoundError, DetectionError, Detection
     from mcp.logger import get_logger, setup_logging
 except ImportError as e:
-    print(f"CRITICAL: CoreUI-MCP package imports failed: {e}", file=sys.stderr)
+    print(f"CRITICAL: DesktopControllerMCP-MCP package imports failed: {e}", file=sys.stderr)
     print("Solution: Run 'poetry install' to install the package properly.", file=sys.stderr)
     sys.exit(1)
 
@@ -83,7 +83,7 @@ except ImportError:
 
 SERVER_VERSION = "0.1.5"
 if sys.version_info < (3, 8):
-    sys.stderr.write("CRITICAL Error: CoreUI-MCP Server requires Python 3.8 or newer.\n")
+    sys.stderr.write("CRITICAL Error: DesktopControllerMCP-MCP Server requires Python 3.8 or newer.\n")
     sys.exit(1)
 
 # --- NPX Security and Execution Configuration ---
@@ -243,7 +243,7 @@ def handle_initialize(params): # ... (wie zuvor)
     if not os.getenv('MCP_TEST_MODE'):
         logger.info(f"Handling 'initialize' request. Client Params: {params}")
     return {
-        "serverInfo": {"name": "coreui-mcp-automation-server", "version": SERVER_VERSION},
+        "serverInfo": {"name": "DesktopControllerMCP-mcp-automation-server", "version": SERVER_VERSION},
         "capabilities": {"tools": TOOL_DEFINITIONS}
     }
 
@@ -559,7 +559,7 @@ def main():
         _load_npx_config() # NPX Konfiguration laden
         init_parallel_processing()
         if not os.getenv('MCP_TEST_MODE'):
-            logger.info(f"CoreUI-MCP Server v{SERVER_VERSION} (Python {sys.version_info.major}.{sys.version_info.minor}) starting. Listening on stdin...")
+            logger.info(f"DesktopControllerMCP-MCP Server v{SERVER_VERSION} (Python {sys.version_info.major}.{sys.version_info.minor}) starting. Listening on stdin...")
         # ... (Rest der main-Funktion wie zuvor) ...
         while True:
             line = sys.stdin.readline()
@@ -620,7 +620,7 @@ def main():
         sys.stderr.write(f"CRITICAL SERVER ERROR: {e_top}\n"); sys.exit(1)
     finally:
         cleanup_parallel_processing()
-        if not os.getenv('MCP_TEST_MODE'): logger.info("CoreUI-MCP Server process shut down.")
+        if not os.getenv('MCP_TEST_MODE'): logger.info("DesktopControllerMCP-MCP Server process shut down.")
 
 if __name__ == "__main__":
     main()

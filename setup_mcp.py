@@ -1,7 +1,7 @@
 """
-setup_mcp.py - Setup and Configuration Script for CoreUI-MCP (v0.1.5)
+setup_mcp.py - Setup and Configuration Script for DesktopControllerMCP-MCP (v0.1.5)
 
-This script assists with the initial setup of the CoreUI-MCP automation framework.
+This script assists with the initial setup of the DesktopControllerMCP-MCP automation framework.
 It performs checks, creates necessary directories, and generates a default
 configuration file (`config.json`).
 
@@ -100,7 +100,7 @@ DEFAULT_APP_CONFIG: dict[str, Any] = {
 
 class MCPSetupHelper:
     """
-    A helper class to manage the setup process for CoreUI-MCP.
+    A helper class to manage the setup process for DesktopControllerMCP-MCP.
     """
     def __init__(self, project_root_dir: Path):
         self.project_root: Path = project_root_dir
@@ -132,7 +132,7 @@ class MCPSetupHelper:
         supported_platforms = ["Windows", "Darwin", "Linux"]
         if current_os not in supported_platforms:
             print(f"[WARNING] OS '{current_os}' is not officially listed as fully supported.")
-            print(f"   CoreUI-MCP targets: {', '.join(supported_platforms)}. Some features might not work as expected.")
+            print(f"   DesktopControllerMCP-MCP targets: {', '.join(supported_platforms)}. Some features might not work as expected.")
         else:
             print(f"[OK] Platform '{current_os}' is within targeted systems.")
         if current_os == "Darwin":
@@ -219,7 +219,7 @@ class MCPSetupHelper:
 
     def print_next_steps_guidance(self) -> None:
         self._print_header("Setup Complete!")
-        print(f"CoreUI-MCP v{PROJECT_VERSION} basic setup is finished.")
+        print(f"DesktopControllerMCP-MCP v{PROJECT_VERSION} basic setup is finished.")
         print("\nNext Steps:")
         print("1. Review 'config.json', especially `security.npx_execution` settings:")
         print("   - Configure `use_allowlist`, `allowed_packages` for the 'npx_execute' tool.")
@@ -241,7 +241,7 @@ class MCPSetupHelper:
         print("\nRefer to README.md for detailed usage instructions.")
 
     def run_full_setup(self) -> None:
-        print(f"===== CoreUI-MCP v{PROJECT_VERSION} Setup Script =====")
+        print(f"===== DesktopControllerMCP-MCP v{PROJECT_VERSION} Setup Script =====")
         if not self.check_python_version(): sys.exit(1)
         self.check_platform_support()
         self.check_external_dependencies()

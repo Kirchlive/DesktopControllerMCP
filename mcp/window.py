@@ -1,5 +1,5 @@
 """
-window.py – Cross-platform window management for CoreUI-MCP (v0.1.5).
+window.py – Cross-platform window management for DesktopControllerMCP-MCP (v0.1.5).
 
 Provides a unified interface for window operations (find, focus, get bounds, etc.)
 across Windows, macOS, and potentially Linux (depending on backend capabilities).
@@ -561,7 +561,7 @@ def get_window(*, title: str | None = None, window_id: int | str | None = None) 
 
 def list_all_windows() -> list[Window]:
     """
-    Lists all currently available windows wrapped in CoreUI-MCP's `Window` objects.
+    Lists all currently available windows wrapped in DesktopControllerMCP-MCP's `Window` objects.
     Filters out windows that are not "alive" or cause errors during basic property access.
 
     Returns:

@@ -1,4 +1,4 @@
-# <img src="https://raw.githubusercontent.com/Core-UI/DesktopControllerMCP/main/assets/DesktopControllerMCP-mcp-logo.png" width="32" height="32"> DesktopControllerMCP-MCP
+# <img src="https://raw.githubusercontent.com/Core-UI/DesktopControllerMCP/main/assets/DesktopControllerMCP-mcp-logo.png" width="32" height="32"> DesktopControllerMCP
 
 **Cross-Platform Desktop Automation Service for AI Agents**
 

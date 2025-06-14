@@ -1,4 +1,4 @@
-# <img src="https://raw.githubusercontent.com/Core-UI/DesktopControllerMCP/main/assets/DesktopControllerMCP-mcp-logo.png" width="32" height="32"> DesktopControllerMCP
+# <img src="https://raw.githubusercontent.com/Core-UI/DesktopControllerMCP/main/assets/DesktopControllerMCP-logo.png" width="32" height="32"> DesktopControllerMCP
 
 **Cross-Platform Desktop Automation Service for AI Agents**
 
@@ -7,9 +7,9 @@
 ![Status](https://img.shields.io/badge/Status-Stable-green.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 
-<img src="https://raw.githubusercontent.com/Core-UI/DesktopControllerMCP/main/assets/DesktopControllerMCP-mcp-workflow.png" alt="DesktopControllerMCP-MCP Workflow Example">
+<img src="https://raw.githubusercontent.com/Core-UI/DesktopControllerMCP/main/assets/DesktopControllerMCP-workflow.png" alt="DesktopControllerMCP Workflow Example">
 
-*DesktopControllerMCP-MCP enables AI agents like Claude Desktop to control graphical user interfaces through a combination of computer vision and synthetic input.*
+*DesktopControllerMCP enables AI agents like Claude Desktop to control graphical user interfaces through a combination of computer vision and synthetic input.*
 
 ## 🚀 Key Features
 
@@ -23,15 +23,15 @@
     - **HTTP API Server:** A flexible FastAPI interface for general-purpose automation tasks.
 - 📼 **Macro Recorder:** Record and play back user actions to easily automate repetitive tasks.
 
-## 🎯 What is DesktopControllerMCP-MCP?
+## 🎯 What is DesktopControllerMCP?
 
-DesktopControllerMCP-MCP acts as a bridge between Large Language Models (LLMs) and your desktop's graphical user interface. It allows an AI agent to "see" the screen and "interact" with it as if it were a human user.
+DesktopControllerMCP acts as a bridge between Large Language Models (LLMs) and your desktop's graphical user interface. It allows an AI agent to "see" the screen and "interact" with it as if it were a human user.
 
 **Workflow Loop:**
-1.  **Focus:** The agent asks DesktopControllerMCP-MCP to focus the "Editor" window.
+1.  **Focus:** The agent asks DesktopControllerMCP to focus the "Editor" window.
 2.  **Screenshot:** The agent requests a screenshot of that window.
 3.  **Analyze:** The agent analyzes the image and finds the coordinates of the "Save" button.
-4.  **Input:** The agent instructs DesktopControllerMCP-MCP to click on those coordinates.
+4.  **Input:** The agent instructs DesktopControllerMCP to click on those coordinates.
 
 All of this happens programmatically, quickly, and reliably across all major operating systems.
 
@@ -63,7 +63,7 @@ cd ..
 
 ### 3. Usage
 
-You can use DesktopControllerMCP-MCP in two ways:
+You can use DesktopControllerMCP in two ways:
 
 #### Option 1: For Claude Desktop (Primary Mode)
 You don't need to start anything manually! Simply configure your Claude Desktop to use the `mcp-server`. The Node.js wrapper will start the Python worker automatically.
@@ -72,7 +72,7 @@ You don't need to start anything manually! Simply configure your Claude Desktop 
 ```json
 {
   "mcpServers": {
-    "DesktopControllerMCP-mcp": {
+    "DesktopControllerMCP": {
       "command": "node",
       "args": ["C:/path/to/DesktopControllerMCP/mcp-server/index.js"]
     }
@@ -85,13 +85,13 @@ This mode is ideal for custom scripts or integration with other tools.
 
 ```bash
 # Starts the FastAPI server on http://127.0.0.1:8000
-poetry run DesktopControllerMCP-mcp-http-api
+poetry run DesktopControllerMCP-http-api
 ```
 The interactive API documentation (Swagger UI) is available at `http://127.0.0.1:8000/docs`.
 
 ## 🛠️ Technical Architecture
 
-DesktopControllerMCP-MCP uses a hybrid architecture to ensure maximum performance and flexibility.
+DesktopControllerMCP uses a hybrid architecture to ensure maximum performance and flexibility.
 
 | Component | Technology | Role |
 | :--- | :--- | :--- |
@@ -100,7 +100,7 @@ DesktopControllerMCP-MCP uses a hybrid architecture to ensure maximum performanc
 | **HTTP API Server** | Python (FastAPI) | Optionally exposes the automation logic via a universal REST API. |
 | **Core Logic** | Python | Cross-platform modules for windowing, input, vision, etc. |
 
-<img src="https://raw.githubusercontent.com/Core-UI/DesktopControllerMCP/main/assets/DesktopControllerMCP-mcp-architecture.png" alt="DesktopControllerMCP-MCP Architecture">
+<img src="https://raw.githubusercontent.com/Core-UI/DesktopControllerMCP/main/assets/DesktopControllerMCP-architecture.png" alt="DesktopControllerMCP Architecture">
 
 ## 🔧 Configuration
 
@@ -123,7 +123,7 @@ A complete list of planned and partially implemented tools can be found in the *
 
 ## 🐛 Troubleshooting & Known Issues
 
-- **macOS Permissions:** The application that starts DesktopControllerMCP-MCP (e.g., Terminal, VS Code) requires "Accessibility" and "Screen Recording" permissions in System Settings.
+- **macOS Permissions:** The application that starts DesktopControllerMCP (e.g., Terminal, VS Code) requires "Accessibility" and "Screen Recording" permissions in System Settings.
 - **Linux Wayland:** Global input control is highly restricted under Wayland. For the best compatibility, an X11 session is recommended.
 - **Incorrect Window Detection:** Ensure `pywinctl` is installed correctly. The `isAlive` check has already been fixed for newer versions.
 
